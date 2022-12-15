@@ -49,10 +49,6 @@ $(document).ready(function() {
 			point.text(data.point);
 			address1.text(data.address1);
 			address2.text(data.address2);
-			var modibutton = "<a href='modi.jsp?mission_no="+tag+"' style='text-decoration: none;' > <input class='btn btn-outline-secondary' type='button' value='수정'/>  </a>";
-			$("#here1").append(modibutton);
-			var deletebutton = "<button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#exampleModal'>삭제</button>";
-			$("#here2").append(deletebutton);
 			var whileurl = "http://localhost/api/countImage/"+tag;
 	
 			fetch(whileurl)
@@ -127,6 +123,11 @@ $(document).ready(function() {
 		function goBack() {
 			history.go(-1);
 		}
+		
+		function test22() {
+			var hrefurl = "../upload/missionUpload.jsp?mission_no="+tag;
+			location.href= hrefurl;
+		}
 </script>
 </head>
 <body>
@@ -169,9 +170,8 @@ $(document).ready(function() {
 		<div align="center">
 			<b id="here1"></b> <b id="here2"></b> <input
 				class='btn btn-outline-secondary' type="button" onclick="goBack()"
-				value="글 목록"> <a href=""> <input
-				class='btn btn-outline-secondary' type="button"
-				value="미션성공 등록 button"></a>
+				value="글 목록"><input class='btn btn-outline-secondary'
+				type="button" value="미션성공 등록 button" onclick="test22()">
 		</div>
 	</div>
 </body>

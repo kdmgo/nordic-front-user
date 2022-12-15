@@ -34,7 +34,7 @@
         var register2 = 
         `
             <h1>회원가입이 완료 되었습니다!</h1><br>
-            <a href = "findOne.html"> 내 정보 보기 </a>    
+            <a href = "fineOne.jsp"> 내 정보 보기 </a>    
         `;
 
         $.ajax ({

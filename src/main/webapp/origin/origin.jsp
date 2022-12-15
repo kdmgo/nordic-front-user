@@ -6,9 +6,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="../../js/main/origin.js"></script>
-  <link rel="stylesheet" href="../../css/header.css">
-  <link rel="stylesheet" href="../../css/footer.css">
+  <script defer src="../js/main/origin.js"></script>
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
 
   <title>노르딕워킹</title>
 </head>
@@ -24,9 +24,9 @@
 
       <div id="side-bar" class="col-2" style="font-size: 10pt;">
         <div class="list-group">
-          <a class="list-group-item list-group-item-action" href="../../intro/user/introduce.jsp">소개</a></li>
+          <a class="list-group-item list-group-item-action" href="../intro/introduce.jsp">소개</a></li>
           <a class="list-group-item" style="font-weight: bolder">기원</a></li>
-          <a class="list-group-item list-group-item-action" href="../../board/board_main.jsp">게시판</a></li>
+          <a class="list-group-item list-group-item-action" href="../board/board_main.jsp">게시판</a></li>
         </div>
       </div>
 
