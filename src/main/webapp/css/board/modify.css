@@ -1,0 +1,14 @@
+.container {
+    width: 1680px;
+    max-width: none !important;
+}
+
+#main-content{
+    font-size: 10pt;
+    vertical-align: middle;
+}
+
+#deleteImg {
+    border-radius: 100px;
+    font-size: 5pt;
+}
