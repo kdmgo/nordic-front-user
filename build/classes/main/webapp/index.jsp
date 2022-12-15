@@ -8,7 +8,9 @@
 </head>
 <body>
 
-INDEX PAGE...
+	<script>
+		location.href="member/findOne.jsp"
+	</script>
 
 </body>
 </html>
