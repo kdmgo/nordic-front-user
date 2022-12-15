@@ -1,0 +1,59 @@
+#object {
+    font-size: 25pt;
+}
+
+#writer, #date {
+    font-size: 9pt;
+    color: gray;
+}
+
+#reply-desc {
+    width: 800px;
+    height: 100px;
+    resize: none;
+}
+
+textarea, button {
+    vertical-align: middle;
+}
+
+
+textarea {
+    border-color: darkgrey;
+}
+
+button {
+    width: 100px;
+    height: 100px;
+}
+
+#reply-table {
+    border-bottom: 1px solid darkgrey;
+    width: 800px;
+    min-height: 100px;
+
+    margin-top: 15px;
+}
+
+#reply-date {
+    font-size: 9pt;
+}
+
+#reply-desc {
+    border-radius: 10px;
+}
+
+#service {
+    font-size: 10pt;
+}
+
+#delReply, #modiReply {
+    font-size: 9pt;
+    text-decoration: none;
+    color: darkgrey;
+}
+
+#board-img {
+    max-width: 900px;
+    max-height: 600px;
+}
