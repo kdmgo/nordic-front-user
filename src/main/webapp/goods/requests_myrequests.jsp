@@ -38,13 +38,16 @@
       }
       }
       function getAll(pageNum){
-
+    	let token = localStorage.getItem('wtw-token') || '';
         var url = "http://localhost/api/requests/my?pageNum=" + pageNum;
 
         $.ajax({
             url: url,
             method: "get",
             contentType : "application/json",
+            headers: {
+ 		        'Authorization': `Bearer \${token}`,
+ 		    },
             data: { },
             success: function (success) {
               
