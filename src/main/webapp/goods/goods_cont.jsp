@@ -109,9 +109,13 @@ const contentType = 'image/png';
           if(!confirm("신청하시겠습니까?")){
 
           } else{
+        	  let token = localStorage.getItem('wtw-token') || '';
             var url="http://localhost/api/requests/check/" + goodsNo;
           fetch(url,{
             method: "GET",
+            headers: {
+            	'Authorization': `Bearer \${token}`,
+             },
           }).then(response => response.json())
             .then(response => {
             console.log(response);
@@ -123,6 +127,7 @@ const contentType = 'image/png';
                 method: "POST",
                 headers: {
                   'Content-Type' : 'application/json',
+                  'Authorization': `Bearer \${token}`,
                 }
               })
             }

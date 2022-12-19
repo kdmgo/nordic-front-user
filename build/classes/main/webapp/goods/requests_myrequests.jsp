@@ -17,10 +17,13 @@
       function cancelRequest(request_no){
         if(!confirm("요청을 취소하시겠습니까?")){
         } else{
-
+        	let token = localStorage.getItem('wtw-token') || '';
         $.ajax({
           url: "http://localhost/api/requests/" + request_no,
           method: "delete",
+          headers: {
+		        'Authorization': `Bearer \${token}`,
+		  },
           success: function(success){
             console.log(success);
             if(success.message.substring(0,4) == '0004'){
