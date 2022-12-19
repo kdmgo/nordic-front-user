@@ -60,9 +60,9 @@
       <div class="card-body">
         <h5 class="card-title"><a href="goods_cont.jsp?\${goods_no}">\${goods_name}</a></h5>
         <p class="card-text">필요 포인트 : \${point}</p>
-      </div>
-    </div>
-  </div>`;
+        </div>
+        </div>
+      </div>`;
 $("#list").append(part1);
 
               }
@@ -145,9 +145,15 @@ $("#list").append(part1);
         $("#paget").html(pagenation)
       }
       function getMyPoint(){
+    	  
+    	  let token = localStorage.getItem('wtw-token') || '';
+    	  
         $.ajax({
           url: "http://localhost/api/points/mypoint",
           method: "get",
+          headers: {
+		        'Authorization': `Bearer \${token}`,
+		  },
           success: function(success){
             $("#mypoint").html(success.data);
           },
