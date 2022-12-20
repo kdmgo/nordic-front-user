@@ -5,6 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>(이용자) 내 요청</title>
+        <link href="<%=request.getContextPath()%>/goods/hidden_text.css" rel="stylesheet" type="text/css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -194,9 +195,16 @@
     <title>Document</title>
   </head>
   <body style="width:100%">
-    <div style="width:800px;" class="mx-auto">
-      <table border="1">
-        <caption>내 요청</caption>
+  	<div class="container mt-5 mb-5">
+		<div class="row">
+			<jsp:include page="../sidebar.jsp"/>
+			<div class="col-sm-10 ps-5">
+				<h1>포인트 상품</h1>
+				<br>	
+				
+	<div style="width:1200px;">
+      <table  style="text-align:center; width: 100%"
+								class="mt-3 table table-hover">
         <thead style="text-align: center;">
             <th>요청번호</th>
             <th>상품명</th>
@@ -213,10 +221,12 @@
 
         </tbody>
     </table>
-    <nav aria-label="Page navigation example">
+    <div style="width:100%">
+    <nav aria-label="Page navigation example" style="margin-left:300px;">
       <ul class="pagination" id="paget">
       </ul>
     </nav>
-</div>
+    </div>
+</div></div></div></div>
   </body>
 </html>

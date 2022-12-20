@@ -166,11 +166,19 @@ const contentType = 'image/png';
     <title>Document</title>
   </head>
   <body style="width:100%">
-    <div style="width:800px;" class="mx-auto">
+  	<div class="container mt-5 mb-5">
+		<div class="row">
+			<jsp:include page="../sidebar.jsp"/>
+			<div class="col-sm-10 ps-5">
+				<h1>포인트 상품</h1>
+				<br>	
+				
+	<div style="width:1200px;">
+
     <button type="button" id="request_button" name="request_button" class="btn btn-dark">신청</button>
     <br><br>
-    <table border="1" width="800" id="ttable">
-      <caption>굿즈 상세정보(사용자)</caption>
+    <table id="ttable"  style="text-align:center; width: 100%"
+								class="mt-3 table table-hover">
       <tbody>
         <tr>
           <th>상품명</th>
@@ -197,6 +205,7 @@ const contentType = 'image/png';
         
       </tbody>
   </table>
+  </div></div></div>
 </div>
   </body>
 </html>
