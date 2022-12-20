@@ -10,6 +10,8 @@
 <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+<link rel="stylesheet" href="../css/header.css">
+<link rel="stylesheet" href="../css/footer.css">
 <style>
 .image-preview {
 	margin-top: 30px;
@@ -27,13 +29,16 @@
 }
 </style>
 <body>
+	<header>
+		<h1>NORDIC WALKING</h1>
+	</header>
 	<div class="container mt-5 mb-5 ">
 		<div class="row justify-content-center mx-auto col-10">
 			<div class="d-flex mt-3 mx-auto justify-content-center border border-dark p-5" style="height: 700px">
 				<div class="col-5">
 					<div id="info"></div>
 					<p>[ 예시 사진  ]</p>
-					<div id="img" class="d-flex"></div>
+					<div id="img"></div>
 					<br>
 				</div> 
 				<div id="user" class="col-6 text-center">
@@ -54,7 +59,7 @@
 	</div>
 	
 	<script>
-	var mission_no = 234;
+	var mission_no = 386;
 	<%-- var mission_no = <%=request.getParameter("mission_no")%> --%>
 	let token = localStorage.getItem('wtw-token') || '';
 	
@@ -84,7 +89,7 @@
 					$("#btn").val('수정')
 					$("#btn").attr('onclick',"imgUpload('PUT')")
 					$("#imgPreview").attr('src',
-							'http://localhost:80/api/admin/mission/result/image/'+img);
+							'http://localhost:80/api/admin/mission/result/image/'+img+'?path=mission');
 					
 					$("#btn2").css("display","");
 					$("#btn2").attr('onclick',"imgUpload('DELETE')")
@@ -113,20 +118,22 @@
 					    jsonObjVal.push(name[i][Object.keys(name[i])[0]]);
 					    
 					    m_img = `
-					    	<img src="http://localhost:80/api/admin/mission/result/image/\${jsonObjVal[i]}" width="200px" class="me-1"
-					    		onerror="this.src='http://localhost:80/api/admin/mission/result/image/error.png';">
+					    	<img src="http://localhost:80/api/mission/image/\${jsonObjVal[i]}?path=missionmaster" class="me-1 col-5 mb-1"
+					    		onerror="this.src='http://localhost:80/api/mission/image/error.png?path=mission';">
 					    `
 					    mission_image = mission_image + m_img;
 					};
 				} else {
 					m_img = `
-						<img src="http://localhost:80/api/admin/mission/result/image/\${image.confirm_file}" width="400px"
-							onerror="this.src='http://localhost:80/api/admin/mission/result/image/error.png';">
+						<img src="http://localhost:80/api/mission/image/\${image.confirm_file}path=missionmaster" width="400px"
+							onerror="this.src='http://localhost:80/api/mission/image/error.png?path=mission';">
 					`
 					mission_image = mission_image + m_img;
 				}
 				
 				$("#img").append(mission_image);
+			}, error: function(data) {
+				location.href = "../login.jsp"
 			}
 		});
 	}
@@ -207,8 +214,10 @@
 	
 </script>
 
-<script>
-   
-</script>
+<footer align="center">
+	서비스 이용약관 | 개인정보 보호정책 | 청소년 보호정책<br> Copyright <strong>©노르딕워킹</strong>
+	All rights reserved.
+</footer>
+
 </body>
 </html>
