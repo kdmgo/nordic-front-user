@@ -19,6 +19,8 @@
 
     function doRegister() {
     	
+     	check();
+    	
         var member_code = document.getElementById("member_code").value;
         var member_name = document.getElementById("member_name").value;
         var mobile_no = document.getElementById("mobile_no").value;
@@ -28,31 +30,37 @@
         var password = document.getElementById("password").value;
         var duplicateId = document.getElementsByTagName('div')[3];
         
-        console.log(duplicateId);
-        
-		console.log(member_code.length);
-		
         var url = "http://localhost/api/member/register";
-        var data = $("#frmData").serialize();
-
-        // <button>내 정보 보기</button>
+    
+        let formData = new FormData();
+        
+        formData.append("member_code", member_code);
+        formData.append("member_name", member_name);
+        formData.append("mobile_no", mobile_no);
+        formData.append("address", address);
+        formData.append("age", age);
+        formData.append("sex", sex);
+        formData.append("password", password);
+        
         var register2 = 
-        `
+        `	<center>
             <h1>회원가입이 완료 되었습니다!</h1><br>
-            <button type="button" onClick="location.href='login.jsp' ">로그인</button>
+            <button type="button" class="btn btn-dark" onClick="location.href='login.jsp' ">로그인</button>
+            </center>
         `;
 
         $.ajax ({
             type : "post",
             url : url,
-            data : data,
+            data : formData,
+            processData : false,
+            contentType: false,
             success : function(result) {
                 console.log(result);
                 alert("회원가입 완료!");
                 $("#registerTitle").empty();
                 $("#register").empty();
-                // document.getElementById("registerResult").innerHTML = register2;
-                location.href="findOne.jsp";
+                document.getElementById("registerResult").innerHTML = register2;
             },
             error : function(request, status, error) {
                 // alert(request.responseJSON.error);
@@ -130,7 +138,7 @@
       </div>
 
     <div id="register">
-        <form method="post" id="frmData" onSubmit="return check()">
+		<!-- <form method="post" id="frmData" onSubmit="return check()"> -->
         
         <!-- 아이디 영역 -->
         <div id="idgroup" class="row">
@@ -250,7 +258,7 @@
                 <button id="rgstBtn" class="btn btn-dark" onClick="doRegister()" >회원가입</button>
             </td></tr>
         </table>
-        </form>
+        <!-- </form> -->
     </div>
     <div id="registerResult"></div>
 </div>

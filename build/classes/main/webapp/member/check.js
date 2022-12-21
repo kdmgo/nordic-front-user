@@ -66,10 +66,5 @@ function check() {
         return false;
     }
 
-    if (availableId == null) {
-        alert("ID 중복 검사를 진행해주세요");
-        member_code.focus();
-        return false;
-    }
 
 }

@@ -9,7 +9,7 @@
 <body>
 
 	<script>
-		location.href="member/findOne.jsp"
+		location.href="member/registerForm.jsp"
 	</script>
 
 </body>

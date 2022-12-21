@@ -19,12 +19,15 @@ function doModifyForm(member_code) {
 
     // var member_code = document.getElementById("memberCode").value;
     var url = "http://localhost/api/member/modifyForm/";
+    
+    let token = localStorage.getItem('wtw-token') || '';
 
     fetch( url+member_code , {
         method: "GET",
         mode:'cors',
         headers: {
             'Content-Type' : 'application/json',
+            'Authorization' : `Bearer \${token}`
         }
     })
 
