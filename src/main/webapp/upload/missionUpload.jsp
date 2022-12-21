@@ -62,6 +62,7 @@
 	var mission_no = 386;
 	<%-- var mission_no = <%=request.getParameter("mission_no")%> --%>
 	let token = localStorage.getItem('wtw-token') || '';
+	let member_code = localStorage.getItem('member_code') || '';
 	
 	$(document).ready(function(){
 		init();

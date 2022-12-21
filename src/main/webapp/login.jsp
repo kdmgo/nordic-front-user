@@ -20,9 +20,10 @@
 		/* 이전 페이지로 이동 */
 		var referrer = document.referrer;
 		if(referrer.includes('login')) {
-			referrer = "missionList.jsp";	
+			referrer = "/nordic-front-user/";	
+		} else if(referrer=='') {
+			referrer = "/nordic-front-user/";
 		}
-		
 		$.ajax({
 			method : "POST",
  			url : "http://localhost:80/api/member/login",
