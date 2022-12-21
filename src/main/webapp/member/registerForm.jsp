@@ -18,7 +18,7 @@
 <script>
 
     function doRegister() {
-
+    	
         var member_code = document.getElementById("member_code").value;
         var member_name = document.getElementById("member_name").value;
         var mobile_no = document.getElementById("mobile_no").value;
@@ -26,7 +26,12 @@
         var age = document.getElementById("age").value;
         var sex = document.getElementById("sex").value;
         var password = document.getElementById("password").value;
-
+        var duplicateId = document.getElementsByTagName('div')[3];
+        
+        console.log(duplicateId);
+        
+		console.log(member_code.length);
+		
         var url = "http://localhost/api/member/register";
         var data = $("#frmData").serialize();
 
@@ -34,7 +39,7 @@
         var register2 = 
         `
             <h1>회원가입이 완료 되었습니다!</h1><br>
-            <a href = "findOne.html"> 내 정보 보기 </a>    
+            <button type="button" onClick="location.href='login.jsp' ">로그인</button>
         `;
 
         $.ajax ({
@@ -46,8 +51,8 @@
                 alert("회원가입 완료!");
                 $("#registerTitle").empty();
                 $("#register").empty();
-                document.getElementById("registerResult").innerHTML = register2;
-                // location.href="findOne.html";
+                // document.getElementById("registerResult").innerHTML = register2;
+                location.href="findOne.jsp";
             },
             error : function(request, status, error) {
                 // alert(request.responseJSON.error);
@@ -65,7 +70,7 @@
         margin:auto;
     }
     div {
-        /* border :1px dotted red; */
+        border :1px dotted red;
         margin:auto;
     }
 
@@ -82,23 +87,36 @@
         margin-bottom: 80px;
     }
 
-    input {
-        width: 300px;
+    #inputArea, #duplicateId {
+        width: 600px;
     }
-
+    
     #indexArea {
         text-align: right;
         font-size: large;
-        font-weight:500;
+        font-weight:550;
     }
+    
+    #wrapper {
+    	width:1200px;
+    }
+    
+    #member_code {width:500px;}
+    #password {width:500px;}
+    #password2 {width:500px;}
+    #member_name {width:500px;}
+    #address {width:500px;}
+    #mobile_no {width:500px;}
+    #sex {width:500px;}
+    #age {width:500px;}
 
 </style>
 <body>
-<div class-"container mt-5 mb-5">
+<div class="container mt-5 mb-5">
 <div class="row">
 <jsp:include page="../sidebar.jsp"></jsp:include>
 <div class="col-sm-10 ps-5">
-
+<div id="wrapper" style="width:90%;">
     <div class="container text-center">
         <div class="row">
           <div class="col" id="registerTitle">
@@ -118,16 +136,16 @@
         <div id="idgroup" class="row">
 
             <!-- 중복검사 메시지 영역 -->
-            <div class="col"></div>
-            <div class="col" id="duplicateId"></div>
+            <div class="col" id="indexArea"></div>
+            <div class="col" id="duplicateId" style="text-align:center;"></div>
             <div class="col"></div>
             <div class="w-100"></div>
             
             <div class="col" id="indexArea">
-                아이디
+              <font color="red">*</font>  아이디
             </div>
-            <div class="col">
-                <input class="form-control" type="text" id="member_code" name="member_code" placeholder="member_code" maxlength="16"></td><td style="width:100px">
+            <div class="col" id="inputArea">
+                <input class="form-control" type="text" id="member_code" name="member_code" placeholder="3 ~ 10 자로 입력해주세요" minlength="3" maxlength="10">
             </div>
             <div class="col">
                 <button type="button" class="btn btn-dark" id="btnIdchk" onClick="idCheck()" style="text-align: left;">중복</button>
@@ -138,10 +156,10 @@
         <div id="pwgroup" class="row">
             
             <div class="col" id="indexArea">
-                비밀번호
+           <font color="red">*</font>     비밀번호
             </div>
-            <div class="col">
-                <input type="password" class="form-control" id="password" name="password" placeholder="password" maxlength="16">
+            <div class="col" id="inputArea">
+                <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력해주세요" maxlength="16">
             </div>
             <div class="col"></div>
         </div>
@@ -150,10 +168,10 @@
         <div id="pwgroup" class="row">
             
             <div class="col" id="indexArea">
-                비밀번호 확인
+             <font color="red">*</font>   비밀번호 확인
             </div>
-            <div class="col">
-                <input type="password" class="form-control" id="password2" name="password2" placeholder="password check" maxlength="16">
+            <div class="col" id="inputArea">
+                <input type="password" class="form-control" id="password2" name="password2" placeholder="비밀번호가 일치해야 합니다" maxlength="16">
             </div>
             <div class="col"></div>
         </div>
@@ -162,10 +180,10 @@
         <div id="namegroup" class="row">
             
             <div class="col" id="indexArea">
-                이름
+             <font color="red">*</font>   이름
             </div>
-            <div class="col">
-                <input type="text" class="form-control" id="member_name" name="member_name" placeholder="member_name">
+            <div class="col" id="inputArea">
+                <input type="text" class="form-control" id="member_name" name="member_name" placeholder="이름을 입력해주세요" maxlength="10">
             </div>
             <div class="col"></div>
         </div>
@@ -174,10 +192,10 @@
         <div id="mobilegroup" class="row">
             
             <div class="col" id="indexArea">
-                휴대폰
+             <font color="red">*</font>   휴대폰
             </div>
-            <div class="col">
-                <input type="text" class="form-control" id="mobile_no" name="mobile_no" placeholder="mobile_no">
+            <div class="col" id="inputArea">
+                <input type="text" class="form-control" id="mobile_no" name="mobile_no" placeholder="휴대폰 번호를 숫자만 입력해주세요" minlength="11" maxlength="11">
             </div>
             <div class="col"></div>
         </div>
@@ -186,10 +204,10 @@
         <div id="mobilegroup" class="row">
             
             <div class="col" id="indexArea">
-                주소
+           <font color="red">*</font>     주소
             </div>
-            <div class="col">
-                <input type="text" class="form-control" id="address" name="address" placeholder="address">
+            <div class="col" id="inputArea">
+                <input type="text" class="form-control" id="address" name="address" placeholder="주소를 입력해주세요" minlength="10">
             </div>
             <div class="col"></div>
         </div>
@@ -198,10 +216,10 @@
         <div id="sexgroup" class="row">
             
             <div class="col" id="indexArea">
-                성별
+          <font color="red">*</font>      성별
             </div>
-            <div class="col">
-                <input type="text" class="form-control" id="sex" name="sex" placeholder="sex">
+            <div class="col" id="inputArea">
+                <input type="text" class="form-control" id="sex" name="sex" placeholder="성별을 입력해주세요" minlength="1">
             </div>
             <div class="col"></div>
         </div>
@@ -210,13 +228,22 @@
         <div id="mobilegroup" class="row">
             
             <div class="col" id="indexArea">
-                나이
+         <font color="red">*</font>       나이
             </div>
-            <div class="col">
-                <input type="number" class="form-control" id="age" name="age" placeholder="age">
+            <div class="col" id="inputArea">
+                <input type="number" class="form-control" id="age" name="age" placeholder="나이를 입력해주세요" maxlength="2" oninput="maxLengthChk(this)">
             </div>
             <div class="col"></div>
         </div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+        	function maxLengthChk(object) {
+        		if (object.value.length > object.maxLength) {
+        			object.value = object.value.slice(0, object.maxLength);
+        		}
+        	}
+        </script>
 
         <table class="table table-borderless w-auto">
             <tr><td><br><br>
@@ -226,6 +253,7 @@
         </form>
     </div>
     <div id="registerResult"></div>
+</div>
 </div>
 </div>
 </div>
