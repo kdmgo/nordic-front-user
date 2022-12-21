@@ -122,7 +122,7 @@ const contentType = 'image/png';
             if(response.message.substring(0,4) == '0003'){
               throw "이미 대기중인 요청이 있습니다"
             } else{
-              url = "http://localhost/api/requests/" + goodsNo;
+              url = "http://localhost/api/requests/goods/" + goodsNo;
               return fetch(url,{
                 method: "POST",
                 headers: {
