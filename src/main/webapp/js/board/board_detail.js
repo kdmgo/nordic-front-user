@@ -9,7 +9,8 @@ let board = result.data;
 console.log(result);
 console.log(page);
 
-let id = 'SYSTEM';
+let token = localStorage.getItem("wtw-token");
+let id = localStorage.getItem("member_code");
 let board_no = board[0].board_no;
 console.log(board_no);
 let object = board[0].board_object;
@@ -61,6 +62,7 @@ if(reply_yn == 'Y') {
                 $('#reply-wrap').append(html);
 
             } else {
+                let index = 1;
                 for (let i = 0; i < data.length; i++) {
                     let writer = data[i].create_member;
                     let date = data[i].create_date;
@@ -80,9 +82,9 @@ if(reply_yn == 'Y') {
                                 '<span style=\"font-size: 8pt\">' + date + '</span>' +'</td>' +
                                 '<td align="right">' +
                                 '<a id=\"delReply\" href=\"javascript:;\" onclick=\"delReply(' + reply_no + ')\">삭제&nbsp</a>' +
-                                '<a id=\"modiReply\" href=\"javascript:;\" onclick=\"modiReply()\">수정</a></td></tr>' +
-                                '<tr id=\"modifyText\"></tr>' +
-                                '<tr><td style=\"font-size: 11pt\"><pre>' + desc + '</pre></td></tr></table>';
+                                '<a id=\"modiReply' + index + '\" href=\"javascript:;\" class=\"modiReply\" ' +
+                                'onclick=\"modiReply('+index+ ',' + reply_no + ')\">수정</a></td></tr>' +
+                                '<tr><td id=\"ReplyText' + index + '\"style=\"font-size: 11pt\"><pre>' + desc + '</pre></td></tr></table>';
 
                             $('#reply-wrap').append(html);
 
@@ -94,6 +96,7 @@ if(reply_yn == 'Y') {
                             $('#reply-wrap').append(html);
                         }
                     }
+                    index++;
                 }
             }
         }
@@ -117,6 +120,9 @@ $.ajax({
     type: 'POST',
     url: 'http://localhost:80/api/board/' + board_no + '/reply',
     data: reply,
+    header: {
+        'Authorization': `Bearer \${token}`
+    },
     success: (result) => {
         $('#reply-wrap').empty();
 
@@ -125,6 +131,7 @@ $.ajax({
             $('#reply-wrap').append('작성된 댓글이 없습니다.');
 
         } else {
+            let index = 1;
             for (let i = 0; i < data.length; i++) {
                 let writer = data[i].create_member;
                 let date = data[i].create_date;
@@ -144,9 +151,9 @@ $.ajax({
                             '<span style=\"font-size: 8pt\">' + date + '</span>' +'</td>' +
                             '<td align="right">' +
                             '<a id=\"delReply\" href=\"javascript:;\" onclick=\"delReply(' + reply_no + ')\">삭제&nbsp</a>' +
-                            '<a id=\"modiReply\" href=\"javascript:;\" onclick=\"modiReply()\">수정</a></td></tr>' +
-                            '<tr id=\"modifyText\"></tr>' +
-                            '<tr><td style=\"font-size: 11pt\"><pre>' + desc + '</pre></td></tr></table>';
+                            '<a id=\"modiReply' + index + '\" href=\"javascript:;\" class=\"modiReply\" ' +
+                            'onclick=\"modiReply('+index+ ',' + reply_no + ')\">수정</a></td></tr>' +
+                            '<tr><td id=\"ReplyText' + index + '\"style=\"font-size: 11pt\"><pre>' + desc + '</pre></td></tr></table>';
 
                         $('#reply-wrap').append(html);
 
@@ -159,6 +166,7 @@ $.ajax({
                     }
 
                 }
+                index++;
             }
         }
     }
@@ -179,6 +187,9 @@ $.ajax({
     contentType: 'application/json; charset=utf-8',
     data: JSON.stringify(data),
     dataType: 'json',
+    header: {
+        'Authorization': `Bearer \${token}`
+    },
     beforeSend: (xhr) => {
         let choice = confirm('댓글을 삭제하시겠습니까?');
         if(!choice) xhr.abort();
@@ -192,6 +203,7 @@ $.ajax({
             $('#reply-wrap').append('작성된 댓글이 없습니다.');
 
         } else {
+            let index = 1;
             for (let i = 0; i < data.length; i++) {
                 let writer = data[i].create_member;
                 let date = data[i].create_date;
@@ -211,9 +223,9 @@ $.ajax({
                             '<span style=\"font-size: 8pt\">' + date + '</span>' +'</td>' +
                             '<td align="right">' +
                             '<a id=\"delReply\" href=\"javascript:;\" onclick=\"delReply(' + reply_no + ')\">삭제&nbsp</a>' +
-                            '<a id=\"modiReply\" href=\"javascript:;\" onclick=\"modiReply()\">수정</a></td></tr>' +
-                            '<tr id=\"modifyText\"></tr>' +
-                            '<tr><td style=\"font-size: 11pt\"><pre>' + desc + '</pre></td></tr></table>';
+                            '<a id=\"modiReply' + index + '\" href=\"javascript:;\" class=\"modiReply\" ' +
+                            'onclick=\"modiReply('+index+ ',' + reply_no + ')\">수정</a></td></tr>' +
+                            '<tr><td id=\"ReplyText' + index + '\"style=\"font-size: 11pt\"><pre>' + desc + '</pre></td></tr></table>';
 
                         $('#reply-wrap').append(html);
 
@@ -225,6 +237,7 @@ $.ajax({
                         $('#reply-wrap').append(html);
                     }
                 }
+                index++;
             }
         }
     }
@@ -236,6 +249,9 @@ console.log('delBoard - ' + no)
 $.ajax({
     type: 'DELETE',
     url: 'http://localhost:80/api/board/' + board_no + '/' + id,
+    header: {
+        'Authorization': `Bearer \${token}`
+    },
     beforeSend: (xhr) => {
         let choice = confirm('정말 삭제하시겠습니까?');
         if(!choice) xhr.abort();
@@ -250,4 +266,48 @@ $.ajax({
 function modifyBoard() {
 console.log('modifyBoard - ' + result)
 localStorage.setItem('board', JSON.stringify(result));
+
+}
+
+function modiReply(index, no) {
+    console.log(index);
+    console.log(no);
+    $('#ReplyText' + index).empty();
+
+    let html = '<textarea id=\"reply-desc-modify\"></textarea>&nbsp' +
+               '<button class=\"btn btn-dark\" id=\"btn-modify-reply\" onclick=\"replyDescModify('+no+','+index+')\">수정</button>';
+
+    $('#ReplyText' + index).append(html);
+}
+
+function replyDescModify(no, index) {
+    let desc = $('#reply-desc-modify').val();
+    console.log(desc);
+
+    let data = {
+        "reply_desc": desc,
+        "update_member": id,
+        "reply_no": no
+    }
+
+    $.ajax({
+        url: "http://localhost:80/api/board/" + board_no + "/reply",
+        type: "PUT",
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(data),
+        dataType: "json",
+        header: {
+            'Authorization': `Bearer \${token}`
+        },
+        success: (result) => {
+            console.log(result);
+
+            let html = "<pre>" + desc + "</pre>";
+
+            $('#ReplyText' + index).empty();
+            $('#ReplyText' + index).append(html);
+
+        }
+    })
+
 }

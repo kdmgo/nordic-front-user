@@ -25,23 +25,28 @@ window.onload = function () {
     $("#content").val(desc)
     $("input[name=reply_yn]:radio[value='" + reply_yn +"']").attr('checked', 'checked');
 
+    let index = 1;
     for (let i = 0; i < dataList.length; i++) {
         if(dataList[i].image_use_yn == 'Y') {
             let imgData = dataList[i]
             pre_Img = imgData.orignal_name;
             image_no = imgData.board_image_no;
 
-            let html = "<button type='button' id=\"deleteImg\" class=\"btn btn-danger btn-sm\" " +
-                "onclick=\"deleteImg("+ image_no + ")\">X</button>" +
-                "<span>&nbsp" + pre_Img + "</span><br>"
+            let html = "<div id=\'uploadImg"+ index + "\'>" +
+                "<button type='button' onclick=\"deleteImg("+ image_no +","+index+")\" " +
+                "class=\"btn btn-danger btn-sm\" style=\"font-size: 5pt;\">X</button>" +
+                "<span>&nbsp" + pre_Img + "</span></div>"
             $("#imgList").append(html)
+
+            index++;
 
         }
     }
 }
 
-function deleteImg(no) {
-    console.log('deleteImg, no - ' + no)
+function deleteImg(no, index) {
+    console.log('deleteImg, image_no - ' + no)
+    console.log('deleteImg, id index - ' + index)
 
     $.ajax({
         method: 'DELETE',
@@ -54,6 +59,8 @@ function deleteImg(no) {
         success: (data) => {
             console.log(data)
             alert('삭제완료!')
+
+            $('#uploadImg' + index).empty();
         }
     });
 }

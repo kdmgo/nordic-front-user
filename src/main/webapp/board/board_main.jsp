@@ -22,13 +22,9 @@
 <div class="container">
 <div class="row">
 
-<div id="side-bar" class="col-2" style="font-size: 10pt;">
-    <div class="list-group">
-        <a class="list-group-item list-group-item-action" href="../../intro/user/introduce.jsp">소개</a></li>
-        <a class="list-group-item list-group-item-action" href="../../origin/user/origin.jsp">기원</a></li>
-        <a class="list-group-item" style="font-weight: bolder">게시판</a></li>
+    <div id="side-bar" class="col-2" style="font-size: 10pt;">
+        <jsp:include page="../sidebar.jsp"/>
     </div>
-</div>
 
 <div id="main-content" class="col-9" style="min-height: 800px;">
     <div id="img"></div>
