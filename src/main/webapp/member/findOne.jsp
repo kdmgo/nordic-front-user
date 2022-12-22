@@ -15,19 +15,21 @@
 
 <script>
 /********************* 회원정보수정 폼 *********************/
-function doModifyForm(member_code) {
+function doModifyForm() {
+//function doModifyForm(member_code) {
 
     // var member_code = document.getElementById("memberCode").value;
     var url = "http://localhost/api/member/modifyForm/";
     
     let token = localStorage.getItem('wtw-token') || '';
+    let member_code = localStorage.getItem('member_code') || '';
 
     fetch( url+member_code , {
         method: "GET",
         mode:'cors',
         headers: {
             'Content-Type' : 'application/json',
-            'Authorization' : `Bearer \${token}`
+            'Authorization' : `Bearer \${token}`,
         }
     })
 
@@ -268,6 +270,7 @@ function doModify() {
     
 </style>
 <body>
+<jsp:include page="../header.jsp"></jsp:include>
 <div class="container mt-5 mb-5">
 <div class="row">
 <jsp:include page="../sidebar.jsp"></jsp:include>
@@ -294,5 +297,6 @@ function doModify() {
 <div id="modifyFormArea"></div>
 
 </div></div></div>
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

@@ -66,5 +66,12 @@ function check() {
         return false;
     }
 
+	if (sex != "남" || sex != "여") {
+		alert("'남' 또는  '여' 의 값으로 입력해 주세요");
+		sex = "";
+		sex.focus();
+		return false;
+	}
+
 
 }

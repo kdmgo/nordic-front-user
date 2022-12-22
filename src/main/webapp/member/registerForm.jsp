@@ -119,6 +119,7 @@
 
 </style>
 <body>
+<jsp:include page="../header.jsp"></jsp:include>
 <div class="container mt-5 mb-5">
 <div class="row">
 <jsp:include page="../sidebar.jsp"></jsp:include>
@@ -264,5 +265,6 @@
 </div>
 </div>
 </div>
+<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
