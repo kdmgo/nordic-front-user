@@ -5,9 +5,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <script defer src="../js/main/introduce.js"></script>
+    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <script defer src="../../js/main/introduce.js"></script>
 
   <title>노르딕워킹</title>
 </head>
@@ -21,13 +21,9 @@
 <div class="container-fluid">
 <div class="row">
 
-<div id="side-bar" class="col-2" style="font-size: 10pt;">
-    <div class="list-group">
-        <a class="list-group-item" style="font-weight: bolder">소개</a></li>
-        <a class="list-group-item list-group-item-action" href="../origin/origin.jsp">기원</a></li>
-        <a class="list-group-item list-group-item-action" href="../board/board_main.jsp">게시판</a></li>
+    <div id="side-bar" class="col-2" style="font-size: 10pt;">
+        <jsp:include page="../sidebar.jsp"/>
     </div>
-</div>
 
 <div id="main-content" class="col-sm-9" style="font-size: 10pt;">
 

@@ -19,7 +19,8 @@
 </header>
 
 <script defer>
-    let id = 'SYSTEM'
+    let token = localStorage.getItem("wtw-token");
+    let id = localStorage.getItem("member_code");
 
     function writeBoard() {
         console.log('write')
@@ -47,6 +48,9 @@
             processData: false,
             enctype: 'multipart/formdata',
             data: formData,
+            header: {
+              'Authorization': `Bearer \${token}`
+            },
             success: (result) => {
                 console.log(result);
 
@@ -63,11 +67,7 @@
 <div class="row">
 
     <div id="side-bar" class="col-2" style="font-size: 10pt;">
-        <div class="list-group">
-            <a class="list-group-item list-group-item-action" href="../../intro/user/introduce.jsp">소개</a></li>
-            <a class="list-group-item list-group-item-action" href="../../origin/user/origin.jsp">기원</a></li>
-            <a class="list-group-item" style="font-weight: bolder">게시판</a></li>
-        </div>
+        <jsp:include page="../sidebar.jsp"/>
     </div>
 
 <div id="main-content" class="col-sm-9">

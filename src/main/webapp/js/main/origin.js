@@ -36,7 +36,7 @@ function getImg(path) {
         let getImage = new Image();
         getImage.src = 'http://localhost:80/api/img/' + fileName;
         getImage.width = 900;
-        getImage.height = 800;
+        getImage.height = 600;
 
         $('#origin-image').append(getImage);
         $('#origin-image').append('<br><br><br>');
