@@ -5,6 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>(이용자) 내 요청</title>
+        <link href="<%=request.getContextPath()%>/goods/hidden_text.css" rel="stylesheet" type="text/css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -69,15 +70,29 @@
                 var goods_name = rowData.goods_name;
                 var use_yn = rowData.use_yn;
                 var remark = rowData.remark;
+                if(remark == null){
+                	remark = ".";
+                }
                 var create_date = rowData.create_date;
                 var confirm_yn = rowData.confirm_yn;
                 var refuse_yn = rowData.refuse_yn;
                 var update_date = rowData.update_date;
                 var point = rowData.point;
-
+				var state;
+                if(use_yn == "N"){
+                	state = "취소된 요청";
+                } else if(confirm_yn == "N"){
+                	state = "미확인 요청"
+                } else if(confirm_yn == "Y"){
+                	if(refuse_yn == "Y"){
+                		state = "거절된 요청"
+                	} else{
+                		state = "수락된 요청"
+                	}
+                } 
+                var tdState = document.createTextNode(state);
                 var tdRequestNo = document.createTextNode(request_no);
                 var tdGoodsName = document.createTextNode(goods_name);
-                var tdUseYn = document.createTextNode(use_yn);
                 var tdRemark = document.createTextNode(remark);
                 var tdCreateDate = document.createTextNode(create_date);
                 var tdConfirmYn = document.createTextNode(confirm_yn);
@@ -92,9 +107,9 @@
 
                 var tr = document.createElement("tr");
 
+                var td0 = document.createElement("td");
                 var td1 = document.createElement("td");
                 var td2 = document.createElement("td");
-                var td3 = document.createElement("td");
                 var td4 = document.createElement("td");
                 var td5 = document.createElement("td");
                 var td6 = document.createElement("td");
@@ -103,20 +118,22 @@
                 var td9 = document.createElement("td");
                 var td10 = document.createElement("td");
 
+                td0.appendChild(tdState);
                 td1.appendChild(tdRequestNo);
                 td2.appendChild(tdGoodsName);
-                td3.appendChild(tdUseYn);
-                td4.appendChild(tdRemark);
+                td9.appendChild(tdRemark);
                 td5.appendChild(tdCreateDate);
                 td6.appendChild(tdConfirmYn);
+                if(confirm_yn == "Y"){
                 td7.appendChild(tdRefuseYn);
                 td8.appendChild(tdUdateDate);
-                td9.appendChild(tdPoint);
+                }
+                td4.appendChild(tdPoint);
                 td10.append(request_button);
 
+                tr.appendChild(td0);
                 tr.appendChild(td1);
                 tr.appendChild(td2);
-                tr.appendChild(td3);
                 tr.appendChild(td4);
                 tr.appendChild(td5);
                 tr.appendChild(td6);
@@ -124,7 +141,19 @@
                 tr.appendChild(td8);
                 tr.appendChild(td9);
                 tr.appendChild(td10);
-
+                
+                if(state == "취소된 요청"){
+                	tr.setAttribute("style","color:gray;text-decoration:line-through;");
+                } else if(state == "미확인 요청"){
+                	//
+                } else if(confirm_yn == "Y"){
+                	if(state == "거절된 요청"){
+                		tr.setAttribute("style","color:red;");
+                	} else if(state == "수락된 요청"){
+                		tr.setAttribute("style","color:blue;")
+                	}
+                } 
+                
                 tbody.appendChild(tr);  
               }
               paging(pageNum, success.data.pages);
@@ -194,29 +223,40 @@
     <title>Document</title>
   </head>
   <body style="width:100%">
-    <div style="width:800px;" class="mx-auto">
-      <table border="1">
-        <caption>내 요청</caption>
+  <jsp:include page="../header.jsp"/>
+  	<div class="container mt-5 mb-5">
+		<div class="row">
+			<jsp:include page="../sidebar.jsp"/>
+			<div class="col-sm-10 ps-5">
+				<h1>포인트 상품</h1>
+				<br>	
+				
+	<div style="width:1200px;">
+      <table  style="text-align:center; width: 100%"
+								class="mt-3 table table-hover">
         <thead style="text-align: center;">
+        	<th>요청상태</th>
             <th>요청번호</th>
             <th>상품명</th>
-            <th>사용여부</th>
-            <th>리마크</th>
+            <th>필요 포인트</th>
             <th>요청일시</th>
             <th>확인여부</th>
             <th>거절여부</th>
             <th>확인날짜</th>
-            <th>포인트</th>
+            <th>기타</th>
             <th>요청취소</th>
         </thead>
         <tbody id="gbody" style="text-align: center;">
 
         </tbody>
     </table>
-    <nav aria-label="Page navigation example">
+    <div style="width:100%">
+    <nav aria-label="Page navigation example" style="margin-left:300px;">
       <ul class="pagination" id="paget">
       </ul>
     </nav>
-</div>
+    </div>
+</div></div></div></div>
+  <jsp:include page="../footer.jsp"/>
   </body>
 </html>

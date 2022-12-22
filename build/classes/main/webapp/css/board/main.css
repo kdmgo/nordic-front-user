@@ -1,0 +1,52 @@
+#thumbnail {
+    width: 200px;
+    height: 200px;
+    border-radius: 5%;
+}
+
+#board-table {
+
+    display: inline-table;
+    width: 200px;
+    height: 300px;
+    table-layout: fixed;
+    list-style-type: none;
+
+    margin: -20px 40px 50px 50px;
+}
+
+#object{
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    font-size: 10pt;
+    color: black;
+    text-decoration: none;
+}
+
+#object:hover{
+    font-weight: bold;
+}
+
+#writer{
+    font-size: 8pt;
+}
+
+#date{
+    font-size: 8pt;
+}
+
+.page-link {
+    color: black;
+}
+
+.container {
+    width: 1680px;
+    max-width: none !important;
+}
+
+#search-result tr td{
+    table-layout: fixed;
+}

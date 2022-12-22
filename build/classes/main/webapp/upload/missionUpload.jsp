@@ -1,50 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <style>
 .image-preview {
 	margin-top: 30px;
 }
 
-	input[type=file]::file-selector-button {
-		width: 150px;
-		height: 30px;
-		background: #fff;
-		border: 1px solid rgb(77, 77, 77);
-		border-radius: 10px;
-		cursor: pointer; &: hover { background : rgb( 77, 77, 77);
-		color: #fff;
-	}
+input[type=file]::file-selector-button {
+	width: 150px;
+	height: 30px;
+	background: #fff;
+	border: 1px solid rgb(77, 77, 77);
+	border-radius: 10px;
+	cursor: pointer; &: hover { background : rgb( 77, 77, 77);
+	color: #fff;
+}
 }
 </style>
 <body>
 	<div class="container mt-5 mb-5 ">
 		<div class="row justify-content-center mx-auto col-10">
-			<div class="d-flex mt-3 mx-auto justify-content-center border border-dark p-5" style="height: 700px">
+			<div
+				class="d-flex mt-3 mx-auto justify-content-center border border-dark p-5"
+				style="height: 700px">
 				<div class="col-5">
 					<div id="info"></div>
-					<p>[ 예시 사진  ]</p>
+					<p>[ 예시 사진 ]</p>
 					<div id="img" class="d-flex"></div>
 					<br>
-				</div> 
+				</div>
 				<div id="user" class="col-6 text-center">
 					<div>
 						<form enctype="multipart/form-data" id="frm">
-							<input type="file" class="real-upload ms-5" id="real-upload" accept="image/*">
-							<input type="button" onclick="" id="btn" class="btn btn-dark">
-							<input type="button" onclick="" id="btn2" class="btn btn-dark" value="삭제" style="display: none">
+							<input type="file" class="real-upload ms-5" id="real-upload"
+								accept="image/*"> <input type="button" onclick=""
+								id="btn" class="btn btn-dark"> <input type="button"
+								onclick="" id="btn2" class="btn btn-dark" value="삭제"
+								style="display: none">
 						</form>
 					</div>
-				
+
 					<div class="image-preview">
 						<img src="" id="imgPreview" width="350px">
 					</div>
@@ -52,10 +60,10 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<script>
-	var mission_no = 234;
-	<%-- var mission_no = <%=request.getParameter("mission_no")%> --%>
+	var mission_no = <%=request.getParameter("mission_no")%> 
+	
 	let token = localStorage.getItem('wtw-token') || '';
 	
 	$(document).ready(function(){
@@ -207,7 +215,7 @@
 	
 </script>
 
-<script>
+	<script>
    
 </script>
 </body>

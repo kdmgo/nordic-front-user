@@ -175,25 +175,35 @@ $("#list").append(part1);
     </script>
     <title>Document</title>
   </head>
-  <body style="width: 100%">
-    <div style="width:800px;" class="mx-auto">
+  <body style="width:100%">
+  <jsp:include page="../header.jsp"/>
+  	<div class="container mt-5 mb-5">
+		<div class="row">
+			<jsp:include page="../sidebar.jsp"/>
+			<div class="col-sm-10 ps-5">
+				<h1>포인트 상품</h1>
+				<br>	
+				
+	<div style="width:1200px;">
+
       <span>
       <input type="text" id="keyword" placeholder="검색" style="width:700px;border-radius: 20px;">
       <button type="button" id="search_button" class="btn btn-dark">검색</button>
       </span>
       <br><br>
-      <div style="display: inline-block;">내포인트 : <span id="mypoint"></span></div>
+      <div style="display: inline-block;font-weight: bold;">내포인트 : <span id="mypoint"></span></div>
       <br><br>
-    <div id="list" class="row row-cols-1 row-cols-md-3 g-4" style="width:800px;">
+    <div id="list" class="row row-cols-1 row-cols-md-3 g-4" style="width:1000px;">
     </div>
     <br><br>
-
-    <nav aria-label="Page navigation example">
+	<div style="width:100%">
+    <nav aria-label="Page navigation example" style="margin-left:250px;">
       <ul class="pagination" id="paget">
       </ul>
     </nav>
-
-  </div>
+	</div>
+  </div></div></div></div>
+  <jsp:include page="../footer.jsp"/>
   </body>
 </html>
 
