@@ -78,7 +78,6 @@
         margin:auto;
     }
     div {
-        border :1px dotted red;
         margin:auto;
     }
 
