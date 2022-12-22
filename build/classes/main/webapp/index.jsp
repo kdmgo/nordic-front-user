@@ -18,6 +18,7 @@
 </style>
 </head>
 <body>
+<<<<<<< HEAD
 	<header>
 		<a href="/nordic-front-user/" style="text-decoration: none"><h1>NORDIC WALKING</h1></a>
 	</header>
@@ -35,5 +36,12 @@
 		All rights reserved.
 	</footer>
 >>>>>>> youjin
+=======
+
+	<script>
+		location.href="member/registerForm.jsp"
+	</script>
+
+>>>>>>> minji
 </body>
 </html>

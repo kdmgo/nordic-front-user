@@ -18,7 +18,13 @@
 <script>
 
     function doRegister() {
+<<<<<<< HEAD
 
+=======
+    	
+     	check();
+    	
+>>>>>>> minji
         var member_code = document.getElementById("member_code").value;
         var member_name = document.getElementById("member_name").value;
         var mobile_no = document.getElementById("mobile_no").value;
@@ -26,6 +32,7 @@
         var age = document.getElementById("age").value;
         var sex = document.getElementById("sex").value;
         var password = document.getElementById("password").value;
+<<<<<<< HEAD
 
         var url = "http://localhost/api/member/register";
         var data = $("#frmData").serialize();
@@ -35,19 +42,49 @@
         `
             <h1>회원가입이 완료 되었습니다!</h1><br>
             <a href = "fineOne.jsp"> 내 정보 보기 </a>    
+=======
+        var duplicateId = document.getElementsByTagName('div')[3];
+        
+        var url = "http://localhost/api/member/register";
+    
+        let formData = new FormData();
+        
+        formData.append("member_code", member_code);
+        formData.append("member_name", member_name);
+        formData.append("mobile_no", mobile_no);
+        formData.append("address", address);
+        formData.append("age", age);
+        formData.append("sex", sex);
+        formData.append("password", password);
+        
+        var register2 = 
+        `	<center>
+            <h1>회원가입이 완료 되었습니다!</h1><br>
+            <button type="button" class="btn btn-dark" onClick="location.href='login.jsp' ">로그인</button>
+            </center>
+>>>>>>> minji
         `;
 
         $.ajax ({
             type : "post",
             url : url,
+<<<<<<< HEAD
             data : data,
+=======
+            data : formData,
+            processData : false,
+            contentType: false,
+>>>>>>> minji
             success : function(result) {
                 console.log(result);
                 alert("회원가입 완료!");
                 $("#registerTitle").empty();
                 $("#register").empty();
                 document.getElementById("registerResult").innerHTML = register2;
+<<<<<<< HEAD
                 // location.href="findOne.html";
+=======
+>>>>>>> minji
             },
             error : function(request, status, error) {
                 // alert(request.responseJSON.error);
@@ -65,7 +102,10 @@
         margin:auto;
     }
     div {
+<<<<<<< HEAD
         /* border :1px dotted red; */
+=======
+>>>>>>> minji
         margin:auto;
     }
 
@@ -82,6 +122,7 @@
         margin-bottom: 80px;
     }
 
+<<<<<<< HEAD
     input {
         width: 300px;
     }
@@ -99,6 +140,39 @@
 <jsp:include page="../sidebar.jsp"></jsp:include>
 <div class="col-sm-10 ps-5">
 
+=======
+    #inputArea, #duplicateId {
+        width: 600px;
+    }
+    
+    #indexArea {
+        text-align: right;
+        font-size: large;
+        font-weight:550;
+    }
+    
+    #wrapper {
+    	width:1200px;
+    }
+    
+    #member_code {width:500px;}
+    #password {width:500px;}
+    #password2 {width:500px;}
+    #member_name {width:500px;}
+    #address {width:500px;}
+    #mobile_no {width:500px;}
+    #sex {width:500px;}
+    #age {width:500px;}
+
+</style>
+<body>
+<jsp:include page="../header.jsp"></jsp:include>
+<div class="container mt-5 mb-5">
+<div class="row">
+<jsp:include page="../sidebar.jsp"></jsp:include>
+<div class="col-sm-10 ps-5">
+<div id="wrapper" style="width:90%;">
+>>>>>>> minji
     <div class="container text-center">
         <div class="row">
           <div class="col" id="registerTitle">
@@ -112,22 +186,38 @@
       </div>
 
     <div id="register">
+<<<<<<< HEAD
         <form method="post" id="frmData" onSubmit="return check()">
+=======
+		<!-- <form method="post" id="frmData" onSubmit="return check()"> -->
+>>>>>>> minji
         
         <!-- 아이디 영역 -->
         <div id="idgroup" class="row">
 
             <!-- 중복검사 메시지 영역 -->
+<<<<<<< HEAD
             <div class="col"></div>
             <div class="col" id="duplicateId"></div>
+=======
+            <div class="col" id="indexArea"></div>
+            <div class="col" id="duplicateId" style="text-align:center;"></div>
+>>>>>>> minji
             <div class="col"></div>
             <div class="w-100"></div>
             
             <div class="col" id="indexArea">
+<<<<<<< HEAD
                 아이디
             </div>
             <div class="col">
                 <input class="form-control" type="text" id="member_code" name="member_code" placeholder="member_code" maxlength="16"></td><td style="width:100px">
+=======
+              <font color="red">*</font>  아이디
+            </div>
+            <div class="col" id="inputArea">
+                <input class="form-control" type="text" id="member_code" name="member_code" placeholder="3 ~ 10 자로 입력해주세요" minlength="3" maxlength="10">
+>>>>>>> minji
             </div>
             <div class="col">
                 <button type="button" class="btn btn-dark" id="btnIdchk" onClick="idCheck()" style="text-align: left;">중복</button>
@@ -138,10 +228,17 @@
         <div id="pwgroup" class="row">
             
             <div class="col" id="indexArea">
+<<<<<<< HEAD
                 비밀번호
             </div>
             <div class="col">
                 <input type="password" class="form-control" id="password" name="password" placeholder="password" maxlength="16">
+=======
+           <font color="red">*</font>     비밀번호
+            </div>
+            <div class="col" id="inputArea">
+                <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력해주세요" maxlength="16">
+>>>>>>> minji
             </div>
             <div class="col"></div>
         </div>
@@ -150,10 +247,17 @@
         <div id="pwgroup" class="row">
             
             <div class="col" id="indexArea">
+<<<<<<< HEAD
                 비밀번호 확인
             </div>
             <div class="col">
                 <input type="password" class="form-control" id="password2" name="password2" placeholder="password check" maxlength="16">
+=======
+             <font color="red">*</font>   비밀번호 확인
+            </div>
+            <div class="col" id="inputArea">
+                <input type="password" class="form-control" id="password2" name="password2" placeholder="비밀번호가 일치해야 합니다" maxlength="16">
+>>>>>>> minji
             </div>
             <div class="col"></div>
         </div>
@@ -162,10 +266,17 @@
         <div id="namegroup" class="row">
             
             <div class="col" id="indexArea">
+<<<<<<< HEAD
                 이름
             </div>
             <div class="col">
                 <input type="text" class="form-control" id="member_name" name="member_name" placeholder="member_name">
+=======
+             <font color="red">*</font>   이름
+            </div>
+            <div class="col" id="inputArea">
+                <input type="text" class="form-control" id="member_name" name="member_name" placeholder="이름을 입력해주세요" maxlength="10">
+>>>>>>> minji
             </div>
             <div class="col"></div>
         </div>
@@ -174,10 +285,17 @@
         <div id="mobilegroup" class="row">
             
             <div class="col" id="indexArea">
+<<<<<<< HEAD
                 휴대폰
             </div>
             <div class="col">
                 <input type="text" class="form-control" id="mobile_no" name="mobile_no" placeholder="mobile_no">
+=======
+             <font color="red">*</font>   휴대폰
+            </div>
+            <div class="col" id="inputArea">
+                <input type="text" class="form-control" id="mobile_no" name="mobile_no" placeholder="휴대폰 번호를 숫자만 입력해주세요" minlength="11" maxlength="11">
+>>>>>>> minji
             </div>
             <div class="col"></div>
         </div>
@@ -186,10 +304,17 @@
         <div id="mobilegroup" class="row">
             
             <div class="col" id="indexArea">
+<<<<<<< HEAD
                 주소
             </div>
             <div class="col">
                 <input type="text" class="form-control" id="address" name="address" placeholder="address">
+=======
+           <font color="red">*</font>     주소
+            </div>
+            <div class="col" id="inputArea">
+                <input type="text" class="form-control" id="address" name="address" placeholder="주소를 입력해주세요" minlength="10">
+>>>>>>> minji
             </div>
             <div class="col"></div>
         </div>
@@ -198,10 +323,17 @@
         <div id="sexgroup" class="row">
             
             <div class="col" id="indexArea">
+<<<<<<< HEAD
                 성별
             </div>
             <div class="col">
                 <input type="text" class="form-control" id="sex" name="sex" placeholder="sex">
+=======
+          <font color="red">*</font>      성별
+            </div>
+            <div class="col" id="inputArea">
+                <input type="text" class="form-control" id="sex" name="sex" placeholder="성별을 입력해주세요" minlength="1">
+>>>>>>> minji
             </div>
             <div class="col"></div>
         </div>
@@ -210,6 +342,7 @@
         <div id="mobilegroup" class="row">
             
             <div class="col" id="indexArea">
+<<<<<<< HEAD
                 나이
             </div>
             <div class="col">
@@ -217,17 +350,44 @@
             </div>
             <div class="col"></div>
         </div>
+=======
+         <font color="red">*</font>       나이
+            </div>
+            <div class="col" id="inputArea">
+                <input type="number" class="form-control" id="age" name="age" placeholder="나이를 입력해주세요" maxlength="2" oninput="maxLengthChk(this)">
+            </div>
+            <div class="col"></div>
+        </div>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+        	function maxLengthChk(object) {
+        		if (object.value.length > object.maxLength) {
+        			object.value = object.value.slice(0, object.maxLength);
+        		}
+        	}
+        </script>
+>>>>>>> minji
 
         <table class="table table-borderless w-auto">
             <tr><td><br><br>
                 <button id="rgstBtn" class="btn btn-dark" onClick="doRegister()" >회원가입</button>
             </td></tr>
         </table>
+<<<<<<< HEAD
         </form>
+=======
+        <!-- </form> -->
+>>>>>>> minji
     </div>
     <div id="registerResult"></div>
 </div>
 </div>
 </div>
+<<<<<<< HEAD
+=======
+</div>
+<jsp:include page="../footer.jsp"></jsp:include>
+>>>>>>> minji
 </body>
 </html>
