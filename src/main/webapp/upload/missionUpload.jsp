@@ -91,7 +91,7 @@
                $("#btn").val('수정')
                $("#btn").attr('onclick',"imgUpload('PUT')")
                $("#imgPreview").attr('src',
-                     'http://localhost:80/api/admin/mission/result/image/'+img+'?path=mission');
+                     'http://localhost:80/api/mission/image/'+img+'?path=mission');
                
                $("#btn2").css("display","");
                $("#btn2").attr('onclick',"imgUpload('DELETE')")

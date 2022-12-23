@@ -131,7 +131,8 @@ const contentType = 'image/png';
                 }
               })
             }
-          }).then(response => response.json())
+          })
+            .then(response => response.json())
             .then(response => {
               console.log("굿즈 신청 완료");
               //console.log(response.data.request_no);
@@ -144,6 +145,7 @@ const contentType = 'image/png';
                   method: "POST",
                   headers: {
                   'Content-Type' : 'application/json',
+                  'Authorization': `Bearer \${token}`,
                   }
                 })
               }
@@ -155,7 +157,7 @@ const contentType = 'image/png';
             })
             .catch(error => {
                 console.log(error);
-                alert("권한이 없습니다. 로그인해주세요");
+                alert(error);
             });
           }
 
