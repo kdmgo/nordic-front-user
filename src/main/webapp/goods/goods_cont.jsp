@@ -155,7 +155,7 @@ const contentType = 'image/png';
             })
             .catch(error => {
                 console.log(error);
-                alert(error);
+                alert("권한이 없습니다. 로그인해주세요");
             });
           }
 

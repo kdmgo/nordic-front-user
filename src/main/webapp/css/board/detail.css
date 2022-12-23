@@ -43,11 +43,18 @@ button {
     border-radius: 10px;
 }
 
+#reply-desc-modify {
+    resize: none;
+    border-radius: 10px;
+    width: 600px;
+    height: 100px;
+}
+
 #service {
     font-size: 10pt;
 }
 
-#delReply, #modiReply {
+#delReply, .modiReply{
     font-size: 9pt;
     text-decoration: none;
     color: darkgrey;

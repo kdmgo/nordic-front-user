@@ -8,8 +8,8 @@ if(localStorage.getItem('page') != null) {
 let board = result.data;
 console.log(result);
 console.log(page);
-
-let token = localStorage.getItem("wtw-token");
+/*
+//let token = localStorage.getItem("wtw-token") || '';*/
 let id = localStorage.getItem("member_code");
 let board_no = board[0].board_no;
 console.log(board_no);

@@ -29,9 +29,7 @@
 <div class="container-fluid">
 <div class="row">
 
-    <div id="side-bar" class="col-2" style="font-size: 10pt;">
         <jsp:include page="../sidebar.jsp"/>
-    </div>
 
       <div id="main-content" class="col-sm-8" style="margin-left: 50px; margin-top: -10px">
         <a id="object"></a>

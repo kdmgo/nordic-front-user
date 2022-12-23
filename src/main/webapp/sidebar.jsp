@@ -21,12 +21,14 @@
 			<a class="list-group-item list-group-item-action" href="<%=request.getContextPath()%>/origin/origin.jsp">&nbsp기원</a> 
 			<a class="list-group-item list-group-item-action" href="<%=request.getContextPath()%>/board/board_main.jsp">&nbsp커뮤니티</a> 
 			<a class="list-group-item list-group-item-action" href="<%=request.getContextPath()%>/mission/list.jsp">미션</a> 
-			<a class="list-group-item list-group-item-action" href="<%=request.getContextPath()%>/goods/goods_avail.jsp">포인트상품</a> 
+
 			<a id="user" class="list-group-item"><b>회원 관리</b></a> 
 			<a id="edit" class="list-group-item list-group-item-action" href="<%=request.getContextPath()%>/member/findOne.jsp">내 정보 수정</a>
 			<a id="goods" class="list-group-item list-group-item-action" href="<%=request.getContextPath()%>/goods/requests_myrequests.jsp">포인트 상품 요청</a>
-			<a class="list-group-item"><b>리포트</b></a> 
-			<a class="list-group-item list-group-item-action" href="<%= request.getContextPath()%>/report/top10.jsp">최다 적립 회원</a>
+			<a id="user" class="list-group-item"><b>포인트 상품 관리</b></a> 
+			<a class="list-group-item list-group-item-action" href="<%=request.getContextPath()%>/goods/goods_avail.jsp">포인트상품</a> 			
+			<a class="list-group-item list-group-item-action" href="<%=request.getContextPath()%>/goods/requests_myrequests.jsp">포인트 상품 신청내역</a> 			
+			
 		</div>
 	</div>
 	

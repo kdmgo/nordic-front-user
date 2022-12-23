@@ -50,7 +50,7 @@
                   source = "http://localhost/api/goods/image/" + image5;
                 }
                 else{
-                  source = "default_pic_jy.jpg";
+                  source = "noimage.png";
                 }
 
                 var sdfd = "asdfafd";

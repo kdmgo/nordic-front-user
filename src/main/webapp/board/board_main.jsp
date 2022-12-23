@@ -22,9 +22,7 @@
 <div class="container">
 <div class="row">
 
-    <div id="side-bar" class="col-2" style="font-size: 10pt;">
         <jsp:include page="../sidebar.jsp"/>
-    </div>
 
 <div id="main-content" class="col-9" style="min-height: 800px;">
     <div id="img"></div>

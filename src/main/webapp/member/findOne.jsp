@@ -152,7 +152,8 @@ function doModifyForm() {
     })
     .catch (error => {
         console.log(error);
-        alert("에러입니다");
+        alert("접근 권한이 없습니다. 로그인 페이지로 이동합니다.");
+        location.href="<%=request.getContextPath()%>/login.jsp";
     })
 
 } // doModifyForm end

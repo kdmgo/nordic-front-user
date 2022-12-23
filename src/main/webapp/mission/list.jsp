@@ -217,6 +217,7 @@ pageEncoding="UTF-8"%>
       //first
       function page(nowpage) {
         var url = "http://localhost/api/list?pageNum=" + nowpage;
+        console.log(url);
         fetch(url)
           .then((response) => response.json())
           .then((data) => paser(data, 1))
