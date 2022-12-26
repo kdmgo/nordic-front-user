@@ -32,9 +32,10 @@
 	<header>
 		<h1>NORDIC WALKING</h1>
 	</header>
-	<div class="container mt-5 mb-5 ">
-		<div class="row justify-content-center mx-auto col-10">
-			<div class="d-flex mt-3 mx-auto justify-content-center border border-dark p-5" style="height: 700px">
+	<div class="container mt-5 mb-5">
+		<div class="row">
+			<jsp:include page="../sidebar.jsp"/>
+			<div class="col-sm-10 ps-5 d-flex mx-auto border border-dark p-5" style="height: 700px">
 				<div class="col-5">
 					<div id="info"></div>
 					<p>[ 예시 사진  ]</p>
@@ -59,16 +60,16 @@
 	</div>
 	
 	<script>
-	var mission_no = 386;
-	<%-- var mission_no = <%=request.getParameter("mission_no")%> --%>
-	let token = localStorage.getItem('wtw-token') || '';
-	let member_code = localStorage.getItem('member_code') || '';
+	var mission_no = <%=request.getParameter("mission_no")%>
 	
 	$(document).ready(function(){
 		init();
 	});
 	
 	function init() {
+		var token = localStorage.getItem('wtw-token') || '';
+		var member_code = localStorage.getItem('member_code') || '';
+
 		$.ajax({
 			type : "GET",
 			url : "http://localhost:80/api/mission/result/"+mission_no,
@@ -133,8 +134,6 @@
 				}
 				
 				$("#img").append(mission_image);
-			}, error: function(data) {
-				location.href = "../login.jsp"
 			}
 		});
 	}
